@@ -1,10 +1,8 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import Login from "./Login";
-import Home from "./Home";
 import { firebase } from "./utils/firebase";
-import { Switch, Route } from "react-router-dom";
 import axios from "./utils/axios";
+import Routes from "./Routes";
 
 let UserContext = React.createContext();
 
@@ -32,16 +30,7 @@ function App() {
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <div className="App">
-        <Switch>
-          <Route path="/login" exact>
-            <Login />
-          </Route>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+        <Routes />
     </UserContext.Provider>
   );
 }

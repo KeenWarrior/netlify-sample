@@ -2,9 +2,11 @@ import "./App.css";
 import { useContext } from "react";
 import { UserContext } from "./App";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 function Home() {
   let { user } = useContext(UserContext);
+  let history = useHistory();
 
   return user ? (
     <div>
@@ -25,7 +27,16 @@ function Home() {
         I am Alive
       </button>
     </div>
-  ) : <h1>Fetching User</h1>;
+  ) : (
+    <div>
+      <h1>Fetching User</h1>
+      <button
+        onClick={function () {
+          history.push("/login");
+        }}
+      >Take me to login</button>
+    </div>
+  );
 }
 
 export default Home;
